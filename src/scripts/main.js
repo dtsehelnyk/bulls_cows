@@ -10,7 +10,7 @@ const rules = document.querySelector('#rules');
 // message variables
 const messageBoxContent = document.querySelector('#message-box');
 const mistakeLengthMessage
-  = '<span class="red">Длиназначения не равна "4"</span>';
+  = '<span class="red">Длина значения не равна "4"</span>';
 const mistakeRepeatMessage
   = '<span class="red">Числа не должны повторяться</span>';
 const victoryMessage

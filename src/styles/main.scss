@@ -6,6 +6,10 @@
 @import "rules";
 @import "content";
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -41,10 +45,6 @@ input::-webkit-inner-spin-button {
   padding: 0 20px;
   min-height: 100vh;
   max-width: 1200px;
-
-  &__content {
-    margin-right: 15px;
-  }
 }
 
 .green {

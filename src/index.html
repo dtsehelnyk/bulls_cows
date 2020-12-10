@@ -11,8 +11,8 @@
 
   <body>
     <main class="main">
-      <article class="content">
-        <h1>Bulls and cows</h1>
+      <section class="content main__content">
+        <h1 class="content__title">Bulls and cows</h1>
 
         <form class="content__form" action="">
           <input
@@ -22,8 +22,11 @@
             placeholder="* * * *"
             required
           >
-          <button id="check-btn" class="content__button">Check</button>
+          <div id="message-box" class="content__message"></div>
+          <button id="check-btn" class="content__button button button--check">Проверить</button>
         </form>
+
+        <button id="rules-btn" class="content__button button button--rules">Правила игры</button>
 
         <ol
           id="attempts-list"
@@ -31,7 +34,19 @@
           reversed
         >
         </ol>
-      </article>
+      </section>
+
+      <section id="rules" class="rules ">
+        <ul class="rules__list">
+          <li>Компьютер загадывает случайное число из 4 разных цифр.</li>
+          <li>Вам нужно ввести 4-x значное число.</li>
+          <li>Компьютер отображает результат (сколько быков, сколько коров).</li>
+          <li>Пример: загадано 1234, введено 1345, результат: 1 бык (единица угадана на своём месте) и 2 коровы (3 и 4 присутствуют но не на своих местах).</li>
+          <li>Все повторяется до тех пор, пока пользователь не отгадает число.</li>
+        </ul>
+
+        <button id="hide-btn" class="rules__button button button--close">Понятно</button>
+      </section>
     </main>
 
     <script type="text/javascript" src="scripts/main.js"></script>

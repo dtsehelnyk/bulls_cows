@@ -2,9 +2,13 @@
 @import "fonts";
 @import "typography";
 
+@import "button";
+@import "rules";
+@import "content";
+
 body {
   margin: 0;
-  font-family: "East Sea Dokdo", cursive;
+  font-family: sans-serif;
   background: url(../images/Cow-head-face_2560x1600.jpg) center no-repeat;
   background-size: cover;
 }
@@ -24,11 +28,10 @@ body {
   box-shadow: 5px 5px 5px -5px rgba(60, 60, 60, 0.3);
 }
 
-h1 {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
-  text-align: center;
-  font-size: 64px;
-  font-family: "East Sea Dokdo", cursive;
 }
 
 .main {
@@ -38,48 +41,9 @@ h1 {
   padding: 0 20px;
   min-height: 100vh;
   max-width: 1200px;
-  
-}
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  height: 500px;
-  width: 100%;
-  max-width: 400px;
-  overflow-y: auto;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px 2px rgba($color: #333, $alpha: 0.8);
-
-  &__input {
-    display: block;
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 300px;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 3px;
-    border: 1px solid #333;
-  }
-
-  &__button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-    width: 150px;
-    background-color: #d0d0ff;
-    border-radius: 3px;
-    border: 1px solid #333;
-    @include hover(opacity, 0.7); 
-    cursor: pointer;
-  }
-
-  &__list {
-    padding-left: 0;
-    font-size: 30px;
+  &__content {
+    margin-right: 15px;
   }
 }
 
@@ -90,4 +54,8 @@ h1 {
 
 .yellow {
   color: orange;
+}
+
+.red {
+  color: red;
 }

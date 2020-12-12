@@ -1,6 +1,5 @@
 @import "utils";
 @import "fonts";
-@import "typography";
 
 @import "button";
 @import "rules";
@@ -15,6 +14,10 @@ body {
   font-family: sans-serif;
   background: url(../images/Cow-head-face_2560x1600.jpg) center no-repeat;
   background-size: cover;
+
+  @include for-640 {
+    background: linear-gradient(to right, #6190e8, #a7bfe8);
+  }
 }
 
 ::-webkit-scrollbar {
@@ -45,6 +48,10 @@ input::-webkit-inner-spin-button {
   padding: 0 20px;
   min-height: 100vh;
   max-width: 1200px;
+
+  @include for-640 {
+    justify-content: center;
+  }
 }
 
 .green {

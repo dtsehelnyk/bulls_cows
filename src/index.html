@@ -20,13 +20,20 @@
             class="content__input"
             type="number"
             placeholder="* * * *"
+            autocomplete="off"
             required
           >
           <div id="message-box" class="content__message"></div>
-          <button id="check-btn" class="content__button button button--check">Проверить</button>
+          <button
+            id="check-btn"
+            class="content__button button button--check"
+            type="submit"
+          >
+            Проверить
+          </button>
         </form>
 
-        <button id="rules-btn" class="content__button button button--rules">Правила игры</button>
+        <button class="content__button button button--rules js-rules-btn">Правила игры</button>
 
         <ol
           id="attempts-list"
@@ -36,7 +43,7 @@
         </ol>
       </section>
 
-      <section id="rules" class="rules ">
+      <section id="rules" class="rules">
         <h2 class="rules__title">Правила игры</h2>
         <ul class="rules__list">
           <li>Компьютер загадывает случайное число из 4 разных цифр.</li>
@@ -46,7 +53,7 @@
           <li>Все повторяется до тех пор, пока пользователь не отгадает число.</li>
         </ul>
 
-        <button id="hide-btn" class="rules__button button button--close">Понятно</button>
+        <button class="rules__button button button--close js-rules-btn">Понятно</button>
       </section>
     </main>
 

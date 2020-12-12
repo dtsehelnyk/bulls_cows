@@ -1,8 +1,7 @@
 'use strict';
 
 const checkBtn = document.querySelector('#check-btn');
-const rulesBtn = document.querySelector('#rules-btn');
-const hideBtn = document.querySelector('#hide-btn');
+const rulesBtns = document.querySelectorAll('.js-rules-btn');
 const input = document.querySelector('#input-num');
 const attemptsList = document.querySelector('#attempts-list');
 const rules = document.querySelector('#rules');
@@ -19,8 +18,8 @@ const victoryMessage
 let randomValue = createRandom();
 
 // button click
-checkBtn.addEventListener('click', e => {
-  e.preventDefault();
+checkBtn.addEventListener('click', event => {
+  event.preventDefault();
   messageBoxContent.innerHTML = '';
 
   // length validation
@@ -31,9 +30,9 @@ checkBtn.addEventListener('click', e => {
   }
 
   // repeating chars validation
-  const unrepeatingChars = Array.from(new Set(Array.from(input.value)));
+  const unrepeatingChars = new Set(input.value);
 
-  if (unrepeatingChars.length !== 4) {
+  if (unrepeatingChars.size !== 4) {
     messageBoxContent.innerHTML = mistakeRepeatMessage;
 
     return;
@@ -62,29 +61,35 @@ checkBtn.addEventListener('click', e => {
 
 // check user's value function
 function checkMatch(computedNum, userNum) {
-  let fullMatch = 0;
-  let partialMatch = 0;
-  const result = {};
+  const result = {
+    full: 0,
+    partial: 0,
+  };
+  let { full, partial } = result;
 
   // check position match
   for (let i = 0; i < computedNum.length; i++) {
     if (computedNum[i] === userNum[i]) {
-      fullMatch++;
+      full++;
     }
   }
 
   // check presence
   for (let i = 0; i < computedNum.length; i++) {
     if (userNum.includes(computedNum[i])) {
-      partialMatch++;
+      partial++;
     }
   }
 
-  result.full = fullMatch;
-  result.partial = partialMatch - fullMatch;
-  window.console.table(result);
+  partial -= full;
 
-  return result;
+  window.console.log(
+    `Full match: ${full}\nPartial match: ${partial}`
+  );
+
+  return {
+    full, partial,
+  };
 }
 
 // create a random number
@@ -95,7 +100,7 @@ function createRandom() {
     const randomNum = Math.floor(Math.random() * 10);
 
     if (!randomVal.includes(randomNum)) {
-      randomVal += ('' + randomNum);
+      randomVal += randomNum;
     }
   }
 
@@ -103,11 +108,24 @@ function createRandom() {
 }
 
 // show/hide rules
-rulesBtn.addEventListener('click', () => {
+function rulesToggler() {
   rules.classList.toggle('rules--hidden');
+}
+
+rulesBtns.forEach(toggler => {
+  toggler.addEventListener('click', rulesToggler);
 });
 
-// hide rules
-hideBtn.addEventListener('click', () => {
-  rules.classList.add('rules--hidden');
-});
+// limited input
+function checkKeydown(key) {
+  // backspace, enter
+  if (!(key.which === 8 || key.which === 13
+    // 0-9
+    || (key.which >= 48 && key.which <= 57)
+    // arrows
+    || (key.which >= 37 && key.which <= 40))) {
+    key.preventDefault();
+  }
+}
+
+input.addEventListener('keydown', checkKeydown);

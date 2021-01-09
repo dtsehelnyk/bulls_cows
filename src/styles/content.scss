@@ -29,7 +29,8 @@
     margin: 0 auto 10px;
     padding: 10px;
     width: 260px;
-    font-size: 16px;
+    font-family: monospace;
+    font-size: 20px;
     text-align: center;
     border-radius: 3px;
     border: 1px solid #333;
@@ -37,7 +38,7 @@
 
   &__message {
     margin-bottom: 10px;
-    min-height: 2em;
+    min-height: 1.4em;
     text-align: center;
     font-size: 14px;
     font-style: italic;
@@ -47,7 +48,23 @@
     margin: 0 auto 10px;
   }
 
+  &__levels {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 10px;
+  }
+
+  &__level-title {
+    margin-top: 0;
+    font-family: monospace;
+  }
+
+  &__levels-button {
+    margin: 0 5px;
+  }
+
   &__list {
+    margin: 0;
     padding-left: 0;
     text-align: center;
     font-size: 30px;

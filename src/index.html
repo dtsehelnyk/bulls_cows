@@ -35,6 +35,14 @@
 
         <button class="content__button button button--rules js-rules-btn">Правила игры</button>
 
+        <p class="content__level-title">Изменить уровень сложности</p>
+        <div class="content__levels">
+          <button class="content__levels-button button button--level">3</button>
+          <button class="content__levels-button button button--level button--level-active">4</button>
+          <button class="content__levels-button button button--level">5</button>
+          <button class="content__levels-button button button--level">6</button>
+        </div>
+
         <ol
           id="attempts-list"
           class="content__list"
@@ -46,10 +54,10 @@
       <section id="rules" class="rules">
         <h2 class="rules__title">Правила игры</h2>
         <ul class="rules__list">
-          <li>Компьютер загадывает случайное число из 4 разных цифр.</li>
-          <li>Вам нужно ввести 4-x значное число.</li>
+          <li>Компьютер загадывает случайное число из 3-6(зависит от уровня сложности) разных цифр.</li>
+          <li>Вам нужно отгадать это число.</li>
           <li>Компьютер отображает результат (сколько быков, сколько коров).</li>
-          <li>Пример: загадано 1234, введено 1345, результат: 1 бык (единица угадана на своём месте) и 2 коровы (3 и 4 присутствуют но не на своих местах).</li>
+          <li>Пример: загадано 1234, введено 1345, результат: 1 бык (единица угадана на своём месте) и 2 коровы (3 и 4 присутствуют, но не на своих местах).</li>
           <li>Все повторяется до тех пор, пока пользователь не отгадает число.</li>
         </ul>
 

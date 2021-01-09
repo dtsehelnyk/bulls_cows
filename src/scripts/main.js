@@ -5,11 +5,13 @@ const rulesBtns = document.querySelectorAll('.js-rules-btn');
 const input = document.querySelector('#input-num');
 const attemptsList = document.querySelector('#attempts-list');
 const rules = document.querySelector('#rules');
+const levels = document.querySelector('.content__levels');
+let lengthOfRandom = 4;
 
 // message variables
 const messageBoxContent = document.querySelector('#message-box');
-const mistakeLengthMessage
-  = '<span class="red">Длина значения не равна "4"</span>';
+let mistakeLengthMessage
+  = `<span class="red">Длина значения не равна ${lengthOfRandom}</span>`;
 const mistakeRepeatMessage
   = '<span class="red">Числа не должны повторяться</span>';
 const victoryMessage
@@ -23,7 +25,7 @@ checkBtn.addEventListener('click', event => {
   messageBoxContent.innerHTML = '';
 
   // length validation
-  if (input.value.length !== 4) {
+  if (input.value.length !== lengthOfRandom) {
     messageBoxContent.innerHTML = mistakeLengthMessage;
 
     return;
@@ -32,7 +34,7 @@ checkBtn.addEventListener('click', event => {
   // repeating chars validation
   const unrepeatingChars = new Set(input.value);
 
-  if (unrepeatingChars.size !== 4) {
+  if (unrepeatingChars.size !== lengthOfRandom) {
     messageBoxContent.innerHTML = mistakeRepeatMessage;
 
     return;
@@ -42,12 +44,19 @@ checkBtn.addEventListener('click', event => {
   const checkResult = checkMatch(randomValue, input.value);
 
   // add user's attempt to the list
-  attemptsList.insertAdjacentHTML('afterbegin', `<li>${input.value} 
-    <span class="green">${checkResult.full}</span> 
-    <span class="yellow">${checkResult.partial}</span></li>`);
+  attemptsList.insertAdjacentHTML(
+    'afterbegin',
+    `
+    <li>
+      ${input.value}
+      <span class="green">${checkResult.full}</span>
+      <span class="yellow">${checkResult.partial}</span>
+    </li>
+    `
+  );
 
   // user won
-  if (checkResult.full === 4) {
+  if (checkResult.full === lengthOfRandom) {
     messageBoxContent.innerHTML = victoryMessage;
     attemptsList.innerHTML = '';
     randomValue = createRandom();
@@ -67,15 +76,13 @@ function checkMatch(computedNum, userNum) {
   };
   let { full, partial } = result;
 
-  // check position match
   for (let i = 0; i < computedNum.length; i++) {
+    // check position match
     if (computedNum[i] === userNum[i]) {
       full++;
     }
-  }
 
-  // check presence
-  for (let i = 0; i < computedNum.length; i++) {
+    // check presence
     if (userNum.includes(computedNum[i])) {
       partial++;
     }
@@ -88,7 +95,8 @@ function checkMatch(computedNum, userNum) {
   );
 
   return {
-    full, partial,
+    full,
+    partial,
   };
 }
 
@@ -96,7 +104,7 @@ function checkMatch(computedNum, userNum) {
 function createRandom() {
   let randomVal = '';
 
-  while (randomVal.length !== 4) {
+  while (randomVal.length !== lengthOfRandom) {
     const randomNum = Math.floor(Math.random() * 10);
 
     if (!randomVal.includes(randomNum)) {
@@ -129,3 +137,32 @@ function checkKeydown(key) {
 }
 
 input.addEventListener('keydown', checkKeydown);
+
+// change level
+levels.addEventListener('click', event => {
+  event.preventDefault();
+
+  const button = event.target.closest('.content__levels-button');
+
+  if (!button || !levels.contains(button)) {
+    return;
+  }
+
+  [...levels.children].forEach(level => {
+    level.classList.remove('button--level-active');
+  });
+
+  button.classList.add('button--level-active');
+
+  input.value = '';
+  messageBoxContent.innerHTML = '';
+  attemptsList.innerHTML = '';
+
+  lengthOfRandom = +button.innerHTML;
+  input.placeholder = '* '.repeat(lengthOfRandom).trim();
+
+  mistakeLengthMessage
+    = `<span class="red">Длина значения не равна ${lengthOfRandom}</span>`;
+
+  randomValue = createRandom();
+});

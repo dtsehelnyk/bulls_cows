@@ -4,3 +4,9 @@
     #{$_property}: $_toValue;
   }
 }
+
+@mixin for-640 {
+  @media (max-width: 640px) {
+    @content;
+  }
+}

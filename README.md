@@ -1,4 +1,8 @@
 # Base layout template with Gulp, SCSS and Stylelint
-1. Create a repo using this template
-1. Replace `<your_account>` and `<repo_name>` with your Github username and the new repo name
-    - [DEMO LINK](https://dtsehelnyk.github.io/bulls_cows/)
+
+Bulls and Cows Game is also known as MasterMind.
+
+- [DEMO LINK](https://dtsehelnyk.github.io/bulls_cows/)
+- HTML, SCSS, JS
+- Responsive design
+- Mobile (> 320px)

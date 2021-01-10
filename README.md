@@ -1,4 +1,4 @@
-# Base layout template with Gulp, SCSS and Stylelint
+# Bulls and Cows Game
 
 Bulls and Cows Game is also known as MasterMind.
 

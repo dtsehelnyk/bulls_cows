@@ -3,11 +3,68 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Bulls and cows</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/main.scss">
   </head>
+
   <body>
-    <h1>Hello Mate Academy</h1>
+    <main class="main">
+      <section class="content">
+        <h1 class="content__title">Bulls and cows</h1>
+
+        <form class="content__form" action="">
+          <input
+            id="input-num"
+            class="content__input"
+            type="number"
+            placeholder="* * * *"
+            autocomplete="off"
+            required
+          >
+          <div id="message-box" class="content__message"></div>
+          <button
+            id="check-btn"
+            class="content__button button button--check"
+            type="submit"
+          >
+            Check
+          </button>
+        </form>
+
+        <button class="content__button button button--rules js-rules-btn">Rules</button>
+
+        <p class="content__level-title">Change difficulty</p>
+        <div class="content__levels">
+          <button class="content__levels-button button button--level">3</button>
+          <button class="content__levels-button button button--level button--level-active">4</button>
+          <button class="content__levels-button button button--level">5</button>
+          <button class="content__levels-button button button--level">6</button>
+        </div>
+
+        <ol
+          id="attempts-list"
+          class="content__list"
+          reversed
+        >
+        </ol>
+      </section>
+
+      <section id="rules" class="rules">
+        <h2 class="rules__title">Rules</h2>
+        <ul class="rules__list">
+          <li>The computer guesses a random number from 3-6 (depends on the level of difficulty) different numbers.</li>
+          <li>You need to guess this number.</li>
+          <li>The computer displays the result (how many bulls, how many cows).</li>
+          <li>Example: guessed 1234, entered 1345, result: 1 bull (one is guessed in its place) and 2 cows (3 and 4 are present, but not in their places).</li>
+          <li>Everything is repeated until the user guesses the number.</li>
+        </ul>
+
+        <button class="rules__button button button--close js-rules-btn">Got it</button>
+      </section>
+    </main>
+
     <script type="text/javascript" src="scripts/main.js"></script>
   </body>
 </html>

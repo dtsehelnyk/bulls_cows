@@ -1,0 +1,37 @@
+.button {
+  display: block;
+  padding: 10px;
+  width: 150px;
+  font-weight: 700;
+  color: #333;
+  border-radius: 3px;
+  border: 0;
+  box-shadow: 0 0 5px 1px #333;
+  @include hover(opacity, 0.8);
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--check {
+    background-color: rgb(167, 255, 171);
+  }
+
+  &--rules {
+    background-color: #edff8a;
+  }
+
+  &--close {
+    background-color: rgb(255, 186, 181);
+  }
+
+  &--level {
+    width: 40px;
+  }
+
+  &--level-active {
+    background-color: #edff8a;
+    pointer-events: none;
+  }
+}

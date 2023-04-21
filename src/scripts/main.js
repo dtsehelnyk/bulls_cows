@@ -11,11 +11,11 @@ let lengthOfRandom = 4;
 // message variables
 const messageBoxContent = document.querySelector('#message-box');
 let mistakeLengthMessage
-  = `<span class="red">Длина значения не равна ${lengthOfRandom}</span>`;
+  = `<span class="red">Value length is not ${lengthOfRandom}</span>`;
 const mistakeRepeatMessage
-  = '<span class="red">Числа не должны повторяться</span>';
+  = '<span class="red">Numbers must not be repeated</span>';
 const victoryMessage
-  = '<span class="green">Молодец! Теперь другое число)</span>';
+  = '<span class="green">Well done! Another number now:)</span>';
 
 let randomValue = createRandom();
 
@@ -162,7 +162,7 @@ levels.addEventListener('click', event => {
   input.placeholder = '* '.repeat(lengthOfRandom).trim();
 
   mistakeLengthMessage
-    = `<span class="red">Длина значения не равна ${lengthOfRandom}</span>`;
+    = `<span class="red">Value length is not ${lengthOfRandom}</span>`;
 
   randomValue = createRandom();
 });
